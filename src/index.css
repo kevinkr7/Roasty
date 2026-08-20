@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Botanical Quiz Design System - Tetra Color Theme */
+
+@layer base {
+  :root {
+    /* Tetra Color Palette */
+    --botanical-green: 152 40% 22%;
+    --cream: 45 40% 97%;
+    --lime-accent: 82 45% 65%;
+    --charcoal: 150 15% 12%;
+    
+    /* Semantic Tokens */
+    --background: 45 40% 97%;
+    --foreground: 150 15% 12%;
+
+    --card: 45 35% 95%;
+    --card-foreground: 150 15% 12%;
+
+    --popover: 45 40% 97%;
+    --popover-foreground: 150 15% 12%;
+
+    --primary: 152 40% 22%;
+    --primary-foreground: 45 40% 97%;
+
+    --secondary: 82 45% 65%;
+    --secondary-foreground: 150 15% 12%;
+
+    --muted: 45 25% 90%;
+    --muted-foreground: 150 10% 40%;
+
+    --accent: 82 45% 65%;
+    --accent-foreground: 150 15% 12%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 45 40% 97%;
+
+    /* Memory Bubble Colors */
+    --bubble-wrong: 12 45% 35%;
+    --bubble-wrong-foreground: 45 40% 97%;
+
+    --success: 152 50% 35%;
+    --success-foreground: 45 40% 97%;
+
+    --border: 45 20% 85%;
+    --input: 45 30% 92%;
+    --ring: 152 40% 22%;
+
+    --radius: 0.75rem;
+
+    /* Typography */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'Space Grotesk', sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(150 15% 12% / 0.08);
+    --shadow-bubble: 0 8px 32px -8px hsl(150 15% 12% / 0.15);
+    --shadow-glow: 0 0 40px -10px hsl(82 45% 65% / 0.3);
+
+    /* Animations */
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-body);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  code, pre, .mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  .plant-shadow {
+    filter: drop-shadow(0 20px 40px hsl(152 40% 22% / 0.15));
+  }
+
+  .roast-text {
+    text-shadow: 0 2px 10px hsl(150 15% 12% / 0.1);
+  }
+
+  .input-botanical {
+    @apply bg-transparent border-b-2 border-primary/30 focus:border-primary 
+           text-center text-2xl md:text-3xl font-medium tracking-wide
+           outline-none transition-all duration-300 py-3 px-4 w-full max-w-md;
+    font-family: var(--font-mono);
+  }
+
+  .input-botanical::placeholder {
+    @apply text-muted-foreground/50 font-normal;
+  }
+
+  .input-botanical:focus {
+    @apply border-primary;
+    box-shadow: 0 4px 20px -8px hsl(152 40% 22% / 0.2);
+  }
+
+  .progress-judgment {
+    @apply text-sm tracking-widest uppercase;
+    font-family: var(--font-mono);
+    letter-spacing: 0.2em;
+  }
+
+  .plant-name-display {
+    @apply text-5xl md:text-7xl font-bold tracking-tight;
+    font-family: var(--font-heading);
+  }
+
+  .roast-display {
+    @apply text-lg md:text-xl font-medium leading-relaxed max-w-lg mx-auto;
+  }
+
+  .correct-answer-reveal {
+    @apply text-sm font-mono text-muted-foreground mt-2;
+  }
+
+  .subtle-pulse {
+    animation: subtlePulse 4s ease-in-out infinite;
+  }
+
+  @keyframes subtlePulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes plantSway {
+    0%, 100% {
+      transform: rotate(-2deg) translateY(0);
+    }
+    50% {
+      transform: rotate(2deg) translateY(-5px);
+    }
+  }
+
+  @keyframes plantDroop {
+    0% {
+      transform: rotate(0deg) translateY(0);
+    }
+    30% {
+      transform: rotate(-15deg) translateY(10px);
+    }
+    100% {
+      transform: rotate(-8deg) translateY(5px);
+    }
+  }
+
+  @keyframes plantHappy {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.05) rotate(-3deg);
+    }
+    75% {
+      transform: scale(1.05) rotate(3deg);
+    }
+  }
+}
